@@ -21,7 +21,7 @@ public class Cassette : MonoBehaviour
         cancion = GetComponent<AudioSource>();
         renderer = GetComponent<Renderer>();
 
-        transform.position = player.transform.position - Vector3.left * 10f;
+        
 
         Debug.Log("I am alive and my name is " + name + ", Rigidbody: " + rb + ", cancion: " + cancion);
     }
@@ -37,6 +37,10 @@ public class Cassette : MonoBehaviour
     {
         Vector3 force = transform.forward * driveForce * Input.GetAxis("Vertical");
         rb.AddForce(force);
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        cancion.Play();
     }
 
     void OnGUI()
